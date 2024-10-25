@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EEFFFF;
+}
+.centre{
+    text-align: center;
+}
+#out1-1{
+    padding: 3px;
+    font-size: 15px;
+    border-color: black;
+    border-radius: 5px;
+}
+/* 献立作成ボタンの装飾 */
+.btn-gradient-3d-simple {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #000;
+    background-image: linear-gradient(#9de3ff 0%, #67ceff 100%);
+    /* border-bottom: solid 3px #5e7fca; */
+}
+
+#title{ /* サイトのタイトル部分 */
+    margin-top: 17px;
+    margin-left: 150px;
+}
+
+/* ↓ここからナビ */
+.site-header{
+    background: #fff;
+    display: flex;
+    padding: 0px 0px;
+    justify-content: space-between;
+    width: 100%;
+}
+.gnav__menu{ /* float leftと同じ役割 */
+    display: flex;
+}
+ul{
+    list-style: none;
+    width: 550px; /* リストの横幅の調整 */
+    margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+}
+li{
+    padding: 10px 20px;
+    float: left;
+    text-align: center;
+    font-size: 95%;
+    width: 120px;
+}
+a{
+    color: rgb(59, 59, 59);
+}
+.black{
+    color: black;
+    text-decoration: none;
+}
+#firstli{
+    border-left: none;
+    border-bottom: 3px solid #92D050;
+}
+li:hover{ /*リストにマウスを乗せたときの処理*/
+    color: #00B0F0;
+    border-bottom: 3px solid #00B0F0;
+}
+
+
+/*↓ここからカレンダー全体*/
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    /* color: rgb(71, 71, 71); */
+    color: rgb(0, 0, 0);
+}
+#header {
+    text-align: center;
+    font-size: 26px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    outline: 2px solid #000; /* カレンダーの外側の線の色 */
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    color: #000;
+}
+th, td {
+    outline: 1px solid rgb(94, 92, 92); /* カレンダーの内側の線の色 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+td:first-child {
+    color: red;
+}
+/*土曜日*/
+td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+    color: rgb(126, 126, 126);
+}
+/*本日*/
+td.today {
+    background-color: #D65E72;
+    color: #fff;
+}
+/*ボタン*/
+#next-prev-button {
+    position: relative;
+}
+#next-prev-button button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: -2.5rem 0 1rem; /* 年と月のh1に重ねる */
+}
+#next-prev-button button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+}
+#prev {
+    float: left;
+}
+#next {
+    float: right;
+}
+
+
+@media only screen and (max-width:970px){
+    #title{ /* サイトのタイトル部分 */
+        margin-top: 17px;
+        margin-left: 30px;
+    }
+    ul{
+        width: 490px; /* リストの横幅の調整 */
+        margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+    }
+}
+@media only screen and (max-width:790px){
+    .site-header{
+        background: #fff;
+        flex-direction: column;
+        padding: 0px 0px;
+        justify-content: space-between;
+        width: 100%;
+    }
+    #title{ /* サイトのタイトル部分 */
+        text-align: center;
+        margin-top: 17px;
+        margin-left: 0px;
+        margin-bottom: 5px;
+    }
+    ul{
+        list-style: none;
+        width: 396px; /* リストの横幅の調整 */
+        margin-top: 15px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+        margin: 0 auto;
+        margin-bottom: 16px;
+        padding: 0px;
+    }
+    li{
+        padding: 10px 6px;
+        float: left;
+        text-align: center;
+        font-size: 95%;
+        width: 120px;
+    }
+}

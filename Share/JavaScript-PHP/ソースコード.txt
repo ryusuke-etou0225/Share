@@ -1,0 +1,14 @@
+■■■■■■■■■■■■■■■■■■■■■■■■
+■ ソースコード使用方法
+■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+■Menu_Creation
+xamppにて作成、動作確認ずみ
+
+xamppインストール後の「C:\xampp\htdocs」階層にMenu_creationフォルダを配置して、
+xamppを立ち上げ、Apache,MySQLをStartする
+MySQL行のAdminからDBを新規作成する
+※使用するDBをエクスポートした「evaluation.sql」をインポートして作成
+ブラウザにてhttp://localhost/Menu_creation/Central.phpを読み込む
+

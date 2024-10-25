@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EEFFFF;
+}
+img{
+    width: 250px;
+    height: 200px;
+}
+
+table{
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+tr{
+    border: 2px solid black;
+    font-size: 18px;
+}
+th,td{
+    width: 250px;
+    height: 40px;
+    background-color: white;
+    border: 2px solid black;
+}
+.syusyoku{
+    background-color: #FFFF77;
+}
+.syusai{
+    background-color: #FF8856;
+}
+.hukusai{
+    background-color: #43FF6B;
+}
+.sonota{
+    background-color: #D0FF43;
+}
+.center{
+    text-align: center;
+}
+
+
+#title{ /* サイトのタイトル部分 */
+    margin-top: 17px;
+    margin-left: 150px;
+}
+/* ↓ここからナビ */
+.site-header{
+    background: #fff;
+    display: flex;
+    padding: 0px 0px;
+    justify-content: space-between;
+    width: 100%;
+}
+.gnav__menu{ /* float leftと同じ役割 */
+    display: flex;
+}
+ul{
+    list-style: none;
+    width: 550px; /* リストの横幅の調整 */
+    margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+}
+li{
+    padding: 10px 20px;
+    float: left;
+    text-align: center;
+    font-size: 95%;
+    width: 120px;
+}
+a{
+    color: rgb(59, 59, 59);
+}
+.black{
+    color: black;
+    text-decoration: none;
+}
+#firstli{
+    border-left: none;
+    border-bottom: 3px solid #92D050;
+}
+li:hover{ /*リストにマウスを乗せたときの処理*/
+    color: #00B0F0;
+    border-bottom: 3px solid #00B0F0;
+}
+
+
+
+@media only screen and (max-width:990px){
+    #title{ /* サイトのタイトル部分 */
+        margin-top: 17px;
+        margin-left: 30px;
+    }
+    ul{
+        width: 490px; /* リストの横幅の調整 */
+        margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+    }
+}
+@media only screen and (max-width:800px){
+    .site-header{
+        background: #fff;
+        flex-direction: column;
+        padding: 0px 0px;
+        justify-content: space-between;
+        width: 100%;
+    }
+    #title{ /* サイトのタイトル部分 */
+        text-align: center;
+        margin-top: 17px;
+        margin-left: 0px;
+        margin-bottom: 5px;
+    }
+    ul{
+        list-style: none;
+        width: 396px; /* リストの横幅の調整 */
+        margin-top: 15px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+        margin: 0 auto;
+        margin-bottom: 16px;
+        padding: 0px;
+    }
+    li{
+        padding: 10px 6px;
+        float: left;
+        text-align: center;
+        font-size: 95%;
+        width: 120px;
+    }
+}

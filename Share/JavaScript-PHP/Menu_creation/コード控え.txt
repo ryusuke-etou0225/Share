@@ -1,0 +1,1930 @@
+    <header class="site-header">
+        <h1 id="title">献立作成サイト</h1>
+        <nav class="gnav">
+            <ul class="gnav__menu">
+                <a href="#"><li  class="gnav__menu__item" id="firstli">四郡点数法</li></a>
+                <a href="#"><li  class="gnav__menu__item">指定できる料理</li></a>
+                <a href="#"><li  class="gnav__menu__item">サイトの使い方</li></a>
+                <a href="#"><li  class="gnav__menu__item" id="lastli">作成ページ</li></a>
+            </ul>
+        </nav>
+    </header><br>
+    <!-- <div class="nav"> -->
+        <!-- <nav>
+            <ul>
+                <a href="#"><li  class="gnav__menu__item" id="firstli">四郡点数法</li></a>
+                <a href="#"><li  class="gnav__menu__item">指定できる料理</li></a>
+                <a href="#"><li  class="gnav__menu__item">このページの使い方</li></a>
+                <a href="#"><li  class="gnav__menu__item" id="lastli">作成ページ</li></a>
+            </ul>
+        </nav> -->
+    <!-- </div> -->
+
+
+
+    .site-header{
+    background: #fff;
+    display: flex;
+    /* position: fixed; */
+    padding: 0px 0px;
+    justify-content: space-between;
+    width: 100%;
+}
+.gnav__menu{
+    display: flex;
+}
+/* .site-logo h1{
+    height: 20px;
+    width: auto;
+} */
+/* .gnav__menu__item{
+    margin-left: 20px;
+} */
+/* .gnav__menu__item a{
+    color: #333;
+    text-decoration: none;
+} */
+
+/* ナビ用スタイル */
+/* nav{
+    background-color: white;
+    display: flex;
+    height: 44px;
+    justify-content: space-between;
+    width: 100%;
+} */
+ul{
+    list-style: none;
+    padding-left: 0;
+    width: 850px;
+    margin-top: 15px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+}
+li{
+    border-right: 1px solid darkgray;
+    border-left: 1px solid darkgray;
+    padding: 10px 20px;
+    float: left;
+    text-align: center;
+    width: 150px;
+}
+
+#firstli{
+    border-left: none;
+}
+#lastli{
+    border-right: none;
+}
+
+li:hover{
+    background-color: #93FFAB;
+    color: black;
+}
+
+
+// ==================================================================
+    // ↓種類ごとに配列に追加して分け、確認するコード
+    // var array_syusyoku = [];
+    // var array_syusai = [];
+    // var array_hukusai = [];
+    // var array_sirumono = [];
+    // for(i=0; i<array.length; i++){
+    //     if(array[i]["type"]=="syusyoku"){
+    //         array_syusyoku.push(array[i]);
+    //     }else if(array[i]["type"]=="syusai"){
+    //         array_syusai.push(array[i]);
+    //     }else if(array[i]["type"]=="hukusai"){
+    //         array_hukusai.push(array[i]);
+    //     }else if(array[i]["type"]=="sirumono"){
+    //         array_sirumono.push(array[i]);
+    //     }
+    // }
+    // // ↓確認用コード
+    // console.log("配列array_syusyokuの中身："+JSON.stringify(array_syusyoku));
+    // console.log("配列array_syusaiの中身："+JSON.stringify(array_syusai));
+    // console.log("配列array_hukusaiの中身："+JSON.stringify(array_hukusai));
+    // console.log("配列array_sirumonoの中身："+JSON.stringify(array_sirumono));
+// ===================================================================
+    // ↓最適化問題を解くためにひたすら繰り返しをさせる処理
+    // while(count<20){
+    //     for(var repetition=0; repetition<array.length; repetition++){
+    //         console.log("=============================================");
+    //         console.log("while文の処理回数："+count);
+    //         console.log("for文の処理回数："+repetition);
+    //         // ===================================================================
+    //         if(count%5==0&&repetition<1){
+    //             // たくさん回してもクリアにならないからいったんfood配列の要素を全削除
+    //             var look_count = 1;
+    //             for(i=1; i<food.length; i++){
+    //                 if(food[i]["look"]=="on"){
+    //                     look_count++;
+    //                 }
+    //             }
+    //             var youso = food.length;
+    //             food.splice(look_count,youso)
+    //             for(i=0; i<food.length; i++){
+    //                 if(i==0){
+    //                     Kcal = food[i]["kcal"];
+    //                     One_group = food[i]["one_group"];
+    //                     Two_group = food[i]["two_group"];
+    //                     Three_group = food[i]["three_group"];
+    //                     Four_group = food[i]["four_group"];
+    //                 }else{
+    //                     Kcal += food[i]["kcal"];
+    //                     One_group += food[i]["one_group"];
+    //                     Two_group += food[i]["two_group"];
+    //                     Three_group += food[i]["three_group"];
+    //                     Four_group += food[i]["four_group"];
+    //                 }
+    //             }
+    //             console.log("food配列の要素をすべて削除："+JSON.stringify(food));
+    //             continue;
+    //         }
+    //         // ===================================================================
+    //         // 栄養の突破に行ってしまい、削除のif文には入れない　大幅改善アリ　whileのカウントが一回回るたびに何か入れる
+    //         var Lack_One_group = 0;
+    //         var Lack_Two_group = 0;
+    //         var Lack_Three_group = 0;
+    //         var Lack_Four_group = 0;
+    //         Lack_One_group = 3.3-One_group;
+    //         Lack_Two_group = 3.3-Two_group;
+    //         Lack_Three_group = 3.3-Three_group;
+    //         Lack_Four_group = 11.3-Four_group;
+    //         // ===================================================================
+    //         // ↓適当に追加するのではなく、今足りていない栄養の値を調べてそれを指定し、追加していく
+    //         var Push = 0;
+    //         if(Lack_One_group>array[repetition]["one_group"]&&Lack_Two_group>array[repetition]["two_group"]&&Lack_Three_group>array[repetition]["three_group"]&&Lack_Four_group>array[repetition]["four_group"]){
+    //             // 配列内に同じ食材があったら追加しない処理
+    //             for(var same=0; same<food.length; same++){
+    //                 if(food[same]["name"]==array[repetition]["name"]){
+    //                     Push = 1;
+    //                     console.log("同じ食材があるから回避する処理："+array[repetition]["name"]);
+    //                     break;
+    //                 }
+    //             }
+    //             if(Push==0){
+    //                 // ↓二種類上の味噌汁とサラダを指定しない
+    //                 var result1 = array[repetition]["name"].indexOf("味噌汁");
+    //                 var result2 = array[repetition]["name"].indexOf("サラダ");
+    //                 if(result1 !== -1){
+    //                     one_misosiru++
+    //                     if(one_misosiru>1){
+    //                         console.log("二種類以上の味噌汁が指定されるので回避の処理："+array[repetition]["name"]);
+    //                         continue;
+    //                     }
+    //                 }else if(result2 !== -1){
+    //                     one_sarada++
+    //                     if(one_sarada>1){
+    //                         console.log("二種類以上のサラダが指定されるので回避の処理："+array[repetition]["name"]);
+    //                         continue;
+    //                     }
+    //                 }
+    //                 // ↓配列に食材を追加する処理
+    //                 console.log("food配列に食材を追加していく処理："+array[repetition]["name"]);
+    //                 food.push(array[repetition]);
+    //                 Kcal += array[repetition]["kcal"];
+    //                 One_group += array[repetition]["one_group"];
+    //                 Two_group += array[repetition]["two_group"];
+    //                 Three_group += array[repetition]["three_group"];
+    //                 Four_group += array[repetition]["four_group"];
+    //             }
+    //         }else{
+    //             // ↓追加すると栄養が突破してしまうときの処理==============================
+    //             console.log("栄養の数値を突破するから追加を回避処理："+array[repetition]["name"]);
+    //             Jump++;
+    //             // ===================================================================
+    //         }
+    //         // ↓最適化クリア時の処理================================================
+    //         if(Max_kcal>Kcal&&One_group>=2.8&&Two_group>=2.8&&Three_group>=2.8&&Four_group>=10.8){
+    //             console.log("最適化クリアの処理　1")
+    //             end = 0;
+    //             end++;
+    //             break;
+    //         }
+    //         // ===================================================================
+    //         // ↓ここから削除をしていく処理
+    //         if(Max_kcal<Kcal||One_group>=3.3||Two_group>=3.3||Three_group>=3.3||Four_group>=11.3){
+    //             console.log("カロリー、各栄養の点数が突破したので削除する処理");
+    //             // food配列からランダムに削除している
+    //             var random = Math.floor(Math.random()*food.length)+0;
+    //             // ↓指定した食材を消さないためにifで回避する　乱数を作り直している
+    //             if(food[random]["look"] == "on"){
+    //                 console.log("指定した食材だから削除しない："+food[random]["name"]);
+    //             }else{
+    //                 console.log("ランダム削除した料理："+food[random]["name"]);
+    //                 Kcal -= food[random]["kcal"];
+    //                 One_group -= food[random]["one_group"];
+    //                 Two_group -= food[random]["two_group"];
+    //                 Three_group -= food[random]["three_group"];
+    //                 Four_group -= food[random]["four_group"];
+    //                 food.splice(random,1);
+    //             }
+    //         }else if(Jump==50){
+    //             // 回避処理が50回続いたのでfood配列からランダムに削除している
+    //             var random = Math.floor(Math.random()*food.length)+0;
+    //             // ↓指定した食材を消さないためにifで回避する　乱数を作り直している
+    //             if(food[random]["look"] == "on"){
+    //                 console.log("指定した食材だから削除しない："+food[random]["name"]);
+    //                 // ↓乱数を作り直す
+    //                 var random = Math.floor(Math.random()*food.length)+0;
+    //                 if(food[random]["look"] == "on"){
+    //                     console.log("指定した食材だから削除しない（二回目）："+food[random]["name"]);
+    //                 }else{
+    //                     console.log("ランダム削除した料理："+food[random]["name"]);
+    //                     Kcal -= food[random]["kcal"];
+    //                     One_group -= food[random]["one_group"];
+    //                     Two_group -= food[random]["two_group"];
+    //                     Three_group -= food[random]["three_group"];
+    //                     Four_group -= food[random]["four_group"];
+    //                     food.splice(random,1);
+    //                 }
+    //             }else{
+    //                 console.log("ランダム削除した料理："+food[random]["name"]);
+    //                 Kcal -= food[random]["kcal"];
+    //                 One_group -= food[random]["one_group"];
+    //                 Two_group -= food[random]["two_group"];
+    //                 Three_group -= food[random]["three_group"];
+    //                 Four_group -= food[random]["four_group"];
+    //                 food.splice(random,1);
+    //             }
+    //             Jump = 0;
+    //         }else if(One_group<=3.3&&Two_group<=3.3&&Three_group<=3.3&&Four_group>=10){
+    //             // 四郡の点数のみ高かった場合イン削除する処理
+    //             console.log("四郡だけ高いので削除します");
+    //             var max = 0;
+    //             var index = 0;
+    //             for(i=0; i<food.length; i++){
+    //                 if(max<food[i]["four_group"]){
+    //                     max = food[i]["four_group"];
+    //                     index = i;
+    //                 }
+    //             }
+    //             if(food[index]["look"] == "on"){
+    //                 console.log("指定した食材だから削除しない："+food[index]["name"]);
+    //                 // 指定した食材が一番四郡の数値が高くなってしまったから、ここからランダムに削除
+    //                 var random = Math.floor(Math.random()*(food.length-1))+1;
+    //                 console.log("ランダム削除した料理："+food[random]["name"]);
+    //                 Kcal -= food[random]["kcal"];
+    //                 One_group -= food[random]["one_group"];
+    //                 Two_group -= food[random]["two_group"];
+    //                 Three_group -= food[random]["three_group"];
+    //                 Four_group -= food[random]["four_group"];
+    //                 food.splice(random,1);
+    //             }else{
+    //                 console.log("削除する食材："+food[index]["name"])
+    //                 Kcal -= food[index]["kcal"];
+    //                 One_group -= food[index]["one_group"];
+    //                 Two_group -= food[index]["two_group"];
+    //                 Three_group -= food[index]["three_group"];
+    //                 Four_group -= food[index]["four_group"];
+    //                 food.splice(index,1);
+    //             }
+    //         } // 削除確認用if文
+    //         // ↓最適化クリア時の処理================================================
+    //         if(Max_kcal>Kcal&&One_group>=2.8&&Two_group>=2.8&&Three_group>=2.8&&Four_group>=10.8){
+    //             console.log("最適化クリアの処理　2")
+    //             end = 0;
+    //             end++;
+    //             break;
+    //         }
+    //         // ===================================================================
+    //         // for文の終わりに確認するコード
+    //         One_group = Math.round(One_group*10)/10;
+    //         Two_group = Math.round(Two_group*10)/10;
+    //         Three_group = Math.round(Three_group*10)/10;
+    //         Four_group = Math.round(Four_group*10)/10;
+    //         var Syusyoku = 0;
+    //         var Syusai = 0;
+    //         var Hukusai = 0;
+    //         var Sirumono = 0;
+    //         for(var i=0; i<food.length; i++){
+    //             if(food[i]["type"]=="syusyoku"){
+    //                 Syusyoku++;
+    //             }else if(food[i]["type"]=="syusai"){
+    //                 Syusai++;
+    //             }else if(food[i]["type"]=="hukusai"){
+    //                 Hukusai++;
+    //             }else if(food[i]["type"]=="sirumono"){
+    //                 Sirumono++;
+    //             }
+    //         }
+    //         console.log("最適化問題の回答："+JSON.stringify(food));
+    //         console.log("総カロリー："+Kcal);
+    //         console.log("総１郡点数："+One_group);
+    //         console.log("総２郡点数："+Two_group);
+    //         console.log("総３郡点数："+Three_group);
+    //         console.log("総４郡点数："+Four_group);
+    //         console.log("最適化終了時の主食の数："+Syusyoku);
+    //         console.log("最適化終了時の主菜の数："+Syusai);
+    //         console.log("最適化終了時の副菜の数："+Hukusai);
+    //         console.log("最適化終了時の汁物の数："+Sirumono);
+    //         // ===================================================================
+    //     } // for文
+    //     if(end==1){
+    //         break;
+    //     }
+    //     count++;
+    // } // while文
+
+    // console.log("繰り返しの終了");
+
+    var buridaikon = {name:"ぶり大根",type:"hukusai",kcal:115,one_group:0,two_group:1,three_group:0.1,four_group:0.4,url:"photo/1.jpg"};
+var gyouza = {name:"餃子",type:"syusai",kcal:236,one_group:0,two_group:0.7,three_group:0.3,four_group:1.2,url:"photo/2.jpg"};
+var kareeraisu = {name:"カレーライス",type:"syusyoku",kcal:859,one_group:0,two_group:1.6,three_group:1,four_group:7.9,url:"photo/3.jpg"};
+var kabochanonyokki = {name:"かぼちゃのニョッキ",type:"hukusai",kcal:283,one_group:1.7,two_group:0,three_group:0.7,four_group:1.2,url:"photo/5.jpg"};
+var omuraisu = {name:"オムライス",type:"syusyoku",kcal:850,one_group:2.2,two_group:0.4,three_group:0.2,four_group:7.8, url: "photo/6.jpg"};
+var guratan = {name:"マカロニグラタン",type:"syusai",kcal:488,one_group:2,two_group:0.8,three_group:0.2,four_group:3.1, url: "photo/7.jpg"};
+var tamagoyaki = {name:"玉子焼き（卵一個の一人前）",type:"hukusai",kcal:145,one_group:1.1,two_group:0,three_group:0,four_group:0.7, url: "photo/8.jpg"};
+var shichuu = {name:"クリームシチュー",type:"sirumono",kcal:269,one_group:0.3,two_group:1,three_group:0.5,four_group:1.8, url: "photo/9.jpg"};
+var peperonchiino = {name:"ペペロンチーノ",type:"syusyoku",kcal:505,one_group:0,two_group:0,three_group:0.3,four_group:6, url: "photo/10.jpg"};
+var hijikinonimono = {name:"ひじきの煮物（小鉢一杯）",type:"hukusai",kcal:135,one_group:0,two_group:0,three_group:0.2,four_group:1.3, url: "photo/11.jpg"};
+var gohan = {name:"ご飯(普通盛り)",type:"syusyoku",kcal:269,one_group:0,two_group:0,three_group:0,four_group:3.4,
+url:"photo/12.jpg"};
+var sukuranburueggu = {name:"スクランブルエッグ（玉子二個分）",type:"hukusai",kcal:292,one_group:2.5,two_group:0,three_group:0,four_group:1.1, url: "photo/13.jpg"};
+var tamagosando = {name:"玉子サンド",type:"syusyoku",kcal:181,one_group:0.6,two_group:0,three_group:0,four_group:1.7, url: "photo/14.jpg"};
+var guriinsarada = {name:"野菜サラダ",type:"hukusai",kcal:10,one_group:0,two_group:0,three_group:0.2,four_group:0, url: "photo/15.jpg"};
+var jamutoosuto = {name:"ジャムトースト（イチゴジャム）",type:"syusyoku",kcal:287,one_group:0,two_group:0,three_group:0,four_group:3.6, url: "photo/17.jpg"};
+// var kokoa = {name:"ココア",type:"sirumono",kcal:157,one_group:1,two_group:0,three_group:0,four_group:1};
+var yasaijuusu = {name:"野菜ジュース（伊藤園 1日分の野菜）",type:"sirumono",kcal:74,one_group:0,two_group:0,three_group:0.9,four_group:0, url: "photo/19.jpg"};
+// var kudamono = {name:"果物",type:"hukusai",kcal:81,one_group:0,two_group:0,three_group:1,four_group:0};
+var sushi = {name:"寿司",type:"syusyoku",kcal:588,one_group:0.3,two_group:2.8,three_group:0,four_group:4.5, url: "photo/20.jpg"};
+var karaage = {name:"唐揚げ",type:"syusai",kcal:303,one_group:0,two_group:2,three_group:0,four_group:1.8, url: "photo/21.jpg"};
+var miitosoosusupagetei = {name:"ミートソーススパゲティ",kcal:614,one_group:0,two_group:1.1,three_group:0.3,four_group:6.3, url: "photo/22.jpg"};
+var naporitan = {name:"ナポリタン",type:"syusyoku",kcal:590,one_group:0.4,two_group:1,three_group:0.2,four_group:5.8, url: "photo/23.jpg"};
+var chaahan = {name:"チャーハン",type:"syusyoku",kcal:708,one_group:1.1,two_group:0.5,three_group:0.2,four_group:7.1, url: "photo/24.jpg"};
+var maaboudoufu = {name:"麻婆豆腐",type:"syusai",kcal:341,one_group:0,two_group:2.6,three_group:0.1,four_group:1.6, url: "photo/25.jpg"};
+var shouyuraamen = {name:"醤油ラーメン",type:"syusyoku",kcal:470,one_group:0.3,two_group:0.3,three_group:0.3,four_group:5.5, url: "photo/26.jpg"};
+var misoraamen = {name:"味噌ラーメン",type:"syusyoku",kcal:580,one_group:0,two_group:0.3,three_group:0.2,four_group:6.9, url: "photo/27.jpg"};
+var shiizaasarada = {name:"シーザーサラダ",type:"hukusai",kcal:234,one_group:0.3,two_group:0,three_group:0.3,four_group:2.4, url: "photo/28.jpg"};
+var potetosarada = {name:"ポテトサラダ",type:"hukusai",kcal:113,one_group:0.3,two_group:0,three_group:0.5,four_group:0.6, url: "photo/29.jpg"};
+var piza = {name:"ピザ",type:"syusyoku",kcal:872,one_group:3.1,two_group:1.7,three_group:0.8,four_group:5.4, url: "photo/30.jpg"};
+var matsutakegomeshi = {name:"松茸ご飯",type:"syusyoku",kcal:232,one_group:0,two_group:0,three_group:0.1,four_group:2.8, url: "photo/31.jpg"};
+var nattou = {name:"納豆",type:"hukusai",kcal:108,one_group:0,two_group:1.3,three_group:0,four_group:0, url: "photo/32.jpg"};
+var onionsarada = {name:"オニオンサラダ",type:"hukusai",kcal:27,one_group:0,two_group:0,three_group:0.4,four_group:0, url: "photo/33.jpg"};
+var kituneudon = {name:"きつねうどん",type:"syusyoku",kcal:453,one_group:0,two_group:1.7,three_group:0,four_group:4.1, url: "photo/34.jpg"};
+var tanukisoba = {name:"たぬきそば",type:"syusyoku",kcal:427,one_group:0,two_group:0.1,three_group:0.1,four_group:5.2, url: "photo/35.jpg"};
+var kuriimushichuu = {name:"クリームシチュー",type:"sirumono",kcal:269,one_group:0.3,two_group:1.0,three_group:0.5,four_group:1.7, url: "photo/36.jpg"};
+var shijiminomisoshiru = { name: "しじみの味噌汁", type: "sirumono", kcal: 35, one_group: 0, two_group: 0.1, three_group: 0, four_group: 0.3, url: "photo/37.jpg"};
+var toufutowakamenomisoshiru = { name: "豆腐とわかめの味噌汁", type: "sirumono", kcal: 56, one_group: 0, two_group: 0.3, three_group: 0.1, four_group: 0.3, url: "photo/38.jpg"};
+var wakamenomisoshiru = { name: "わかめの味噌汁", type: "sirumono", kcal: 34, one_group: 0, two_group: 0.1, three_group: 0.1, four_group: 0.3, url: "photo/39.jpg"};
+var asarinomisoshiru = { name: "あさりの味噌汁", type: "sirumono", kcal: 43, one_group: 0, two_group: 0.1, three_group: 0, four_group: 0.3, url: "photo/40.jpg"};
+var daikonnomisoshiru = { name: "大根の味噌汁", kcal: 38, one_group: 0, two_group: 0.1, three_group: 0.1, four_group: 0.3, url: "photo/41.jpg"};
+var namekonomisoshiru = { name: "なめこの味噌汁", type: "sirumono", kcal: 34, one_group: 0, two_group: 0.1, three_group: 0, four_group: 0.3, url: "photo/42.jpg"};
+var tenpurasoba = { name: "天ぷらそば", type: "syusyoku", kcal: 495, one_group: 0.1, two_group: 0.5, three_group: 0, four_group: 5.6, url: "photo/43.jpg"};
+var tsukimisoba = { name: "月見そば", type: "syusyoku", kcal: 471, one_group: 1.1, two_group: 0, three_group: 0, four_group: 4.6, url: "photo/44.jpg"};
+var tukimiudon = { name: "月見うどん", type: "syusyoku", kcal: 416, one_group: 1.1, two_group: 0, three_group: 0, four_group: 4.0, url: "photo/45.jpg"};
+var yakionigiri = { name: "焼きおにぎり", type: "syusyoku", kcal: 145, one_group: 0, two_group: 0, three_group: 0, four_group: 1.8, url: "photo/46.jpg"};
+var katsukaree = { name: "カツカレー", type: "syusyoku", kcal: 1103, one_group: 0, two_group: 2.6, three_group: 1.2, four_group: 9.7, url: "photo/47.jpg"};
+var katsudonburi = { name: "かつ丼", type: "syusyoku", kcal: 922, one_group: 1.4, two_group: 2.6, three_group: 0.1, four_group: 7.4, url: "photo/48.jpg"};
+var ankakeyakisoba = { name: "あんかけ焼きそば", type: "syusyoku", kcal: 745, one_group: 0, two_group: 1.7, three_group: 0.3, four_group: 7.4, url: "photo/49.jpg"};
+var chanpon = { name: "ちゃんぽん", type: "syusyoku", kcal: 721, one_group: 0, two_group: 1.8, three_group: 0.8, four_group: 6.4, url: "photo/50.jpg"};
+var wantanmen = { name: "ワンタンメン", type: "syusyoku", kcal: 687, one_group: 0, two_group: 1.1, three_group: 0.2, four_group: 7.3, url: "photo/51.jpg"};
+var oyakodon = { name: "親子丼", type: "syusyoku", kcal: 684, one_group: 1.1, two_group: 0.9, three_group: 1.2, four_group: 6.2, url: "photo/52.jpg"};
+var tendon = { name: "天丼", type: "591", kcal: 642, one_group: 0.1, two_group: 0.8, three_group: 0.1, four_group: 7.1, url: "photo/53.jpg"};
+var doria = { name: "ドリア", type: "syusyoku", kcal: 591, one_group: 2.7, two_group: 0.8, three_group: 0.1, four_group: 7.1, url: "photo/54.jpg"};
+var doraikaree = { name: "ドライカレー", type: "syusyoku", kcal: 587, one_group: 0, two_group: 0.7, three_group: 0.7, four_group: 6.5, url: "photo/55.jpg"};
+var hiyashichuuka = { name: "冷やし中華", type: "syusyoku", kcal: 577, one_group: 0.5, two_group: 0.3, three_group: 0.1, four_group: 5.3, url: "photo/56.jpg"};
+var okonomiyaki = { name: "お好み焼き", type: "syusyoku", kcal: 545, one_group: 0.4, two_group: 1, three_group: 0.4, four_group: 4.5, url: "photo/57.jpg"};
+var chaashuumen = { name: "チャーシュー麺", type: "syusyoku", kcal: 564, one_group: 0, two_group: 1.5, three_group: 0, four_group: 5.4, url: "photo/58.jpg"};
+var chikinraisu = { name: "チキンライス", type: "syusyoku", kcal: 563, one_group: 0.9, two_group: 0.4, three_group: 0.4, four_group: 5.2, url: "photo/59.jpg"};
+var tanmen = { name: "タンメン", type: "syusyoku", kcal: 556, one_group: 0, two_group: 1.4, three_group: 0.2, four_group: 5.2, url: "photo/60.jpg"};
+var kamameshi = { name: "釜めし", type: "syusyoku", kcal: 525, one_group: 0.4, two_group: 0.2, three_group: 0, four_group: 5.9, url: "photo/61.jpg"};
+var ebipirafu = { name: "エビピラフ", type: "syusyoku", kcal: 520, one_group: 0.4, two_group: 0.6, three_group: 0.1, four_group: 5.2, url: "photo/62.jpg"};
+var makaroniguratan = { name: "マカロニグラタン", type: "syusai", kcal: 488, one_group: 1.9, two_group: 0.8, three_group: 0.1, four_group: 2.2, url: "photo/63.jpg"};
+var chiizubaagaa = { name: "チーズバーガー", type: "syusyoku", kcal: 474, one_group: 0.8, two_group: 2.0, three_group: 0.2, four_group: 2.9, url: "photo/64.jpg"};
+var tororosoba = { name: "とろろそば", type: "syusyoku", kcal: 448, one_group: 0, two_group: 0, three_group: 0.9, four_group: 4.6, url: "photo/65.jpg"};
+var yakisoba = { name: "焼きそば", type: "syusyoku", kcal: 469, one_group: 0, two_group: 1.0, three_group: 0.2, four_group: 4.6, url: "photo/66.jpg"};
+var hottodoggu = { name: "ホットドッグ", type: "syusyoku", kcal: 414, one_group: 0, two_group: 2.3, three_group: 0, four_group: 2.9, url: "photo/67.jpg"};
+var takoyaki = { name: "たこ焼き", type: "syusyoku", kcal: 317, one_group: 0.3, two_group: 0.2, three_group: 0.1, four_group: 3.1, url: "photo/68.jpg"};
+var sandoitchi = { name: "サンドイッチ", type: "syusyoku", kcal: 314, one_group: 0.5, two_group: 0.7, three_group: 0.1, four_group: 2.6, url: "photo/69.jpg"};
+var pizatoosuto = { name: "ピザトースト", type: "syusyoku", kcal: 264, one_group: 0.7, two_group: 0.4, three_group: 0.1, four_group: 2.3, url: "photo/70.jpg"};
+var hayashiraisu = { name: "ハヤシライス", type: "syusyoku", kcal: 1077, one_group: 0, two_group: 4.7, three_group: 1, four_group: 8.3, url: "photo/71.jpg"};
+var bibinba = { name: "ビビンバ", type: "syusyoku", kcal: 593, one_group: 0.4, two_group: 1.4, three_group: 1.4, four_group: 4.0, url: "photo/72.jpg"};
+var monjayaki = { name: "もんじゃ焼き", type: "syusyoku", kcal: 510, one_group: 0, two_group: 2.5, three_group: 0.4, four_group: 3.3, url: "photo/73.jpg"};
+var shioraamen = { name: "塩ラーメン", type: "syusyoku", kcal: 471, one_group: 0, two_group: 0.3, three_group: 0.1, four_group: 5.4, url: "photo/74.jpg"};
+var tenshinhan = { name: "天津飯", type: "syusyoku", kcal: 471, one_group: 1.4, two_group: 0.3, three_group: 0.1, four_group: 5.4, url: "photo/75.jpg"};
+var teriyakichikinbaagaa = { name: "照り焼きチキンバーガー", type: "syusyoku", kcal: 468, one_group: 0, two_group: 3.1, three_group: 0, four_group: 2.7, url: "photo/76.jpg"};
+var hanbaagu = { name: "ハンバーグ", type: "syusai", kcal: 422, one_group: 0.1, two_group: 2.0, three_group: 0.2, four_group: 2.9, url: "photo/77.jpg"};
+var katsusando = { name: "カツサンド", type: "syusyoku", kcal: 421, one_group: 0, two_group: 2.8, three_group: 0, four_group: 2.4, url: "photo/78.jpg"};
+var tamagokakegomeshi = { name: "卵かけご飯", type: "syusyoku", kcal: 374, one_group: 1.1, two_group: 0, three_group: 0, four_group: 3.5, url: "photo/79.jpg"};
+var kareepan = { name: "カレーパン", type: "syusyoku", kcal: 358, one_group: 0.3, two_group: 0.3, three_group: 0.1, four_group: 3.8, url: "photo/80.jpg"};
+var korokkepan = { name: "コロッケパン", type: "syusyoku", kcal: 339, one_group: 0, two_group: 1.2, three_group: 0, four_group: 2.8, url: "photo/81.jpg"};
+var furenchitoosuto = { name: "フレンチトースト", type: "syusyoku", kcal: 298, one_group: 1, two_group: 0, three_group: 0, four_group: 2.7, url: "photo/82.jpg"};
+var razania = { name: "ラザニア", type: "syusai", kcal: 290, one_group: 0.6, two_group: 0.5, three_group: 0.2, four_group: 2.2, url: "photo/83.jpg"};
+var gyuunyuuirishiriaru = { name: "牛乳入りシリアル", type: "syusyoku", kcal: 286, one_group: 1.6, two_group: 0, three_group: 0, four_group: 1.9, url: "photo/84.jpg"};
+var meronpan = { name: "メロンパン", type: "syusyoku", kcal: 276, one_group: 0.2, two_group: 0, three_group: 0, four_group: 3.2, url: "photo/85.jpg"};
+var yakisobapan = { name: "焼きそばパン", type: "syusyoku", kcal: 233, one_group: 0, two_group: 0.4, three_group: 0.1, four_group: 3.1, url: "photo/86.jpg"};
+var yasaiitame = { name: "野菜炒め", type: "syusai", kcal: 120, one_group: 0, two_group: 0, three_group: 0.6, four_group: 0.8, url: "photo/87.jpg"};
+var jamupan = { name: "ジャムパン", type: "syusyoku", kcal: 230, one_group: 0.1, two_group: 0, three_group: 0, four_group: 2.7, url: "photo/88.jpg"};
+var anpan = { name: "あんぱん", type: "syusyoku", kcal: 218, one_group: 0.1, two_group: 0.4, three_group: 0, four_group: 2.1, url: "photo/89.jpg"};
+var kuriimupan = { name: "クリームパン", type: "syusyoku", kcal: 216, one_group: 1.2, two_group: 0, three_group: 0, four_group: 1.4, url: "photo/90.jpg"};
+var chirashisushi = { name: "ちらし寿司", type: "syusyoku", kcal: 718, one_group: 1.2, two_group: 2.5, three_group: 0, four_group: 5.2, url: "photo/91.jpg"};
+var mentaikokuriimupasuta = { name: "明太子クリームパスタ", type: "syusyoku", kcal: 638, one_group: 0.9, two_group: 0.6, three_group: 0, four_group: 6.1, url: "photo/92.jpg"};
+var negitorodonburi = { name: "ネギトロ丼", type: "syusyoku", kcal: 660, one_group: 0.8, two_group: 1.5, three_group: 0.3, four_group: 5.2, url: "photo/93.jpg"};
+var marugeriita = { name: "マルゲリータ", type: "syusyoku", kcal: 564, one_group: 2, two_group: 0, three_group: 0.3, four_group: 4.7, url: "photo/94.jpg"};
+var wafuumentaikopasuta = { name: "和風明太子パスタ", type: "syusyoku", kcal: 517, one_group: 0, two_group: 0.6, three_group: 0, four_group: 5.7, url: "photo/95.jpg"};
+var kakiagesoba = { name: "かき揚げそば", type: "syusyoku", kcal: 466, one_group: 0, two_group: 0.1, three_group: 0.1, four_group: 5.4, url: "photo/96.jpg"};
+var nattoumaki = { name: "納豆巻き", type: "syusyoku", kcal: 217, one_group: 0, two_group: 0.6, three_group: 0, four_group: 2, url: "photo/97.jpg"};
+var tekkamaki = { name: "鉄火巻き", type: "syusyoku", kcal: 206, one_group: 0, two_group: 0.4, three_group: 0.1, four_group: 2, url: "photo/98.jpg"};
+var syougayaki = { name: "生姜焼き", type: "syusyoku", kcal: 374, one_group: 0, two_group: 3.1, three_group: 0, four_group: 1.4, url: "photo/99.jpg"};
+var kyabetsunosengiri = { name: "キャベツの千切り", type: "hukusai", kcal: 24, one_group: 0, two_group: 0, three_group: 0.1, four_group: 0, url: "photo/100.jpg"};
+var temakisushi = { name: "手巻き寿司", type: "syusyoku", kcal: 789, one_group: 0.4, two_group: 1.7, three_group: 0.4, four_group: 7, url: "photo/101.jpg"};
+var ikuradonburi = { name: "いくら丼", type: "syusyoku", kcal: 701, one_group: 0, two_group: 3.3, three_group: 0.2, four_group: 5.2, url: "photo/102.jpg"};
+var unidonburi = { name: "うに丼", type: "syusyoku", kcal: 536, one_group: 0, two_group: 1, three_group: 0.1, four_group: 5.5, url: "photo/103.jpg"};
+var yoguruto = {name:"ヨーグルト（個食タイプを一つ）",type:"hukusai",kcal:63,one_group:0.8,two_group:0,three_group:0,four_group:0, url: "photo/104.jpg"};
+var ringo = {name:"りんご（市販されている物を一つ）",type:"hukusai",kcal:138,one_group:0,two_group:0,three_group:1.7,four_group:0, url: "photo/105.jpg"};
+
+    // ↓ここで好みを反映させることができる、データベースから値を受け取ったらここで最初から反映させる
+    for(i=0; i<param.length; i++){
+        if(Five[i]==3){
+            for(var j=0; j<array.length; j++){
+                if(array[j]["name"]==param[i]){
+                    array[j]["look"] = "on";
+                    food.push(array[j]);
+                    console.log("追加した料理"+array[j]["name"])
+                    if(food.length==1){
+                        Kcal = array[j]["kcal"];
+                        One_group = array[j]["one_group"];
+                        Two_group = array[j]["two_group"];
+                        Three_group = array[j]["three_group"];
+                        Four_group = array[j]["four_group"];
+                    }else{
+                        Kcal += array[j]["kcal"];
+                        One_group += array[j]["one_group"];
+                        Two_group += array[j]["two_group"];
+                        Three_group += array[j]["three_group"];
+                        Four_group += array[j]["four_group"];
+                    }
+                }
+            }
+        }
+        if(food.length==3){
+            break;
+        }
+    }
+    // ↓食べたいものの指定がなかった場合の処理
+    if(food.length == 0){
+        // ↓ご飯を追加している
+        array[0]["look"] = "on";
+        food.push(array[0]);
+        console.log("追加された食べ物："+array[0]["name"]);
+        Kcal = array[0]["kcal"];
+        One_group = array[0]["one_group"];
+        Two_group = array[0]["two_group"];
+        Three_group = array[0]["three_group"];
+        Four_group = array[0]["four_group"];
+    }
+
+
+        for(i=0; i<param.length; i++){
+        if(Five[i]==3){
+            for(var j=0; j<array.length; j++){
+                if(array[j]["name"]==param[i]){
+                    array[j]["look"] = "on";
+                    food.push(array[j]);
+                    console.log("追加した料理"+array[j]["name"])
+                    if(food.length==1){
+                        Kcal = array[j]["kcal"];
+                        One_group = array[j]["one_group"];
+                        Two_group = array[j]["two_group"];
+                        Three_group = array[j]["three_group"];
+                        Four_group = array[j]["four_group"];
+                    }else{
+                        Kcal += array[j]["kcal"];
+                        One_group += array[j]["one_group"];
+                        Two_group += array[j]["two_group"];
+                        Three_group += array[j]["three_group"];
+                        Four_group += array[j]["four_group"];
+                    }
+                }
+            }
+        }
+        if(food.length==3){
+            break;
+        }
+    }
+    // ↓食べたいものの指定がなかった場合の処理
+    if(food.length == 0){
+        // ↓ご飯を追加している
+        array[0]["look"] = "on";
+        food.push(array[0]);
+        console.log("追加された食べ物："+array[0]["name"]);
+        Kcal = array[0]["kcal"];
+        One_group = array[0]["one_group"];
+        Two_group = array[0]["two_group"];
+        Three_group = array[0]["three_group"];
+        Four_group = array[0]["four_group"];
+    }
+
+
+    for(var i=0; i<7; i++){
+        incriment++;
+        start(food_week,incriment,random2); // 献立作成の関数を動かす
+        if(check!=1){ // サイトを開いたのが一回目ではないのなら分岐
+            if(hoge==0){
+                for(var j=0; j<week_day.length; j++){
+                    var len = week_day[j];
+                }
+                hoge++;
+            }
+            if((len+i+1)>day_count){ // このコードは表示している月の日付より上の数字を配列に追加しなくなるが、一日が表示月に適応されてしまう
+                week_day.push(1);
+                len = 0;
+                // break;
+            }else{
+                week_day.push(len+i+1);
+            }
+        }else{ // サイトを開いたのが一回目ならこの分岐
+            week_day.push(today.getDate()+i);
+        }
+        // ↓
+        var result = week_day.indexOf(1,1);
+        if(result>0){
+            week_month.push(today.getMonth()+2);
+        }else{
+            week_month.push(today.getMonth()+1);
+        }
+    }
+
+
+        // var Syusyoku = 0;
+    // var Syusai = 0;
+    // var Hukusai = 0;
+    // var Sirumono = 0;
+    // for(i=0; i<food.length; i++){
+    //     if(food[i]["type"]=="syusyoku"){
+    //         Syusyoku++
+    //     }else if(food[i]["type"]=="syusai"){
+    //         Syusai++
+    //     }else if(food[i]["type"]=="hukusai"){
+    //         Hukusai++
+    //     }else if(food[i]["type"]=="sirumono"){
+    //         Sirumono++
+    //     }
+    // }
+    // console.log("最適化問題の回答："+JSON.stringify(food));
+    // console.log("総カロリー："+Kcal);
+    // console.log("総１郡点数："+Math.round(One_group*10)/10);
+    // console.log("総２郡点数："+Math.round(Two_group*10)/10);
+    // console.log("総３郡点数："+Math.round(Three_group*10)/10);
+    // console.log("総４郡点数："+Math.round(Four_group*10)/10);
+    // console.log("最適化終了時の主食の数："+Syusyoku);
+    // console.log("最適化終了時の主菜の数："+Syusai);
+    // console.log("最適化終了時の副菜の数："+Hukusai);
+    // console.log("最適化終了時の汁物の数："+Sirumono);
+    // console.log("=============================================");
+
+
+            var atai = Number(localStorage.getItem('result',result));
+        if(atai == -1){
+            atai = 1;
+        }
+        console.log(atai)
+        var result = week_day.indexOf(1,(atai+1));
+        localStorage.setItem('result',result);
+        var month = Number(localStorage.getItem('month'));
+        var moon = month+1;
+        console.log("moon"+moon)
+        console.log("month"+month)
+        console.log("result"+result)
+        console.log("atai"+atai)
+        if(result>0){
+            week_month.push(moon);
+        }else{
+            week_month.push(month);
+        }
+
+
+                var result = week_day.indexOf(1,1);
+        if(result>0){
+            week_month.push(today.getMonth()+2);
+        }else{
+            week_month.push(today.getMonth()+1);
+        }
+
+
+        #title{ /* サイトのタイトル部分 */
+    margin-top: 17px;
+    margin-left: 100px;
+}
+
+
+/* ↓ここからナビ */
+.site-header{
+    background: #fff;
+    width: 100%;
+}
+.gnav__menu{ /* float leftと同じ役割 */
+    display: flex;
+}
+ul{
+    list-style: none;
+    padding-left: 0;
+    width: 500px;
+    margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+    /* margin-left: 30%; */
+}
+
+
+
+
+// カレンダーに背景を付けるコード
+var result = ID_month.indexOf(month);
+var result_jun = ID.indexOf(1,1);
+console.log(result_jun)
+if(month == (today.getMonth()+month)){
+    if(month == 1){
+        if(result>0){
+            ID.splice(result_jun,ID_month.length);
+        }
+    }else{
+        if(result>0){
+            ID.splice(0,result);
+        }
+    }
+}
+console.log("ID："+ID);
+
+
+    if(today.getMonth()==Number(month_count)){
+        console.log("todayとmonth_countが同じ");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('Month',date.getMonth()); // 表示している月をDateにもとずきローカルストレージ
+    }else if(today.getMonth()!=Number(month_count)){
+        Day.setMonth(Day.getMonth() + Number(month_count));
+        console.log("todayとmonth_countが違う");
+        var year = Day.getFullYear();
+        var month = Day.getMonth();
+        localStorage.setItem('Month',Day.getMonth()); // 表示している月をDateにもとずきローカルストレージ
+    }
+
+
+    // ↓ここからカレンダー作成の関数
+// 前の月表示
+function prev(){
+    var date = localStorage.getItem("Month");
+    console.log("ローカルストレージのdateの値"+date);
+    showDate.setMonth(showDate.getMonth() - 1 + Number(date));
+    month_count = localStorage.getItem('showDate');
+    month_count--;
+    kazu++;
+    localStorage.setItem('showDate',month_count);
+    localStorage.setItem('kazu',kazu);
+    showProcess(showDate);
+    window.location.reload();
+}
+
+// 次の月表示
+function next(){
+    var date = localStorage.getItem("Month");
+    console.log("--------------------------------");
+    console.log("ローカルストレージのdateの値"+date);
+    showDate.setMonth(showDate.getMonth() + 1 + Number(date));
+    console.log("showdateの中："+showDate.getMonth())
+    month_count = localStorage.getItem('showDate');
+    month_count++;
+    console.log("month_countの値："+month_count);
+    kazu++;
+    localStorage.setItem('showDate',month_count);
+    localStorage.setItem('kazu',kazu);
+    showProcess(showDate);
+    console.log("--------------------------------");
+    // window.location.reload();
+}
+
+// カレンダー表示
+function showProcess(date){
+    var month_count = Number(localStorage.getItem('showDate'));
+    var kazu = localStorage.getItem('kazu');
+    console.log("--------------------------------");
+    console.log("today.getMonht()の値："+today.getMonth());
+    console.log("Number(month_count)の値："+Number(month_count));
+    console.log("dateの値："+date.getMonth());
+    console.log("month_count："+month_count);
+    if(today.getMonth()==Number(month_count)){
+        console.log("todayとmonth_countが同じ");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('Month',1); // 表示している月をDateにもとずきローカルストレージ
+    }else if(today.getMonth()!=Number(month_count)){
+        Day.setMonth(Day.getMonth() + Number(month_count));
+        console.log("todayとmonth_countが違う");
+        var year = Day.getFullYear();
+        var month = Day.getMonth();
+        localStorage.setItem('Month',Day.getMonth()); // 表示している月をDateにもとずきローカルストレージ
+    }
+    if(kazu>0){
+        console.log("画面表示月を固定で表示");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('kazu',0);
+    }
+    document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
+
+    var calendar = createProcess(year, month);
+    document.querySelector('#calendar').innerHTML = calendar;
+    console.log("--------------------------------");
+}
+
+
+
+
+'use strict';
+
+// ↓献立作成関数
+function Seven (){
+    document.getElementById("out1-1").textContent = "　";
+    var incriment = 0;
+    var day_count = localStorage.getItem('day_count');
+    var hata = 0;
+    var flag = 0;
+    Open();
+    var check = Number(localStorage.getItem('open'));
+    if(check>1){
+        var food_week = JSON.parse(localStorage.getItem('kondate'));
+        var week_day = JSON.parse(localStorage.getItem('week_day'));
+        var week_month = JSON.parse(localStorage.getItem('week_month'));
+    }else{
+        var food_week = [];
+        var week_day = [];
+        var week_month = [];
+    }
+    var random2 = Math.floor(Math.random()*6)+1; // start関数の中で扱う乱数
+    for(var i=0; i<7; i++){
+        incriment++;
+        start(food_week,incriment,random2); // 献立作成の関数を動かす
+        if(check!=1){ // サイトを開いたのが一回目ではないのなら分岐
+            for(var j=0;j<week_day.length; j++){
+                var len = week_day[j];
+            }
+            if((len+1)>day_count){ // このコードは表示している月の日付より上の数字を配列に追加しなくなる
+                week_day.push(1);
+                flag++;
+                localStorage.setItem('flag',flag);
+            }else{
+                week_day.push(len+1);
+            }
+        }else{ // サイトを開いたのが一回目ならこの分岐
+            if((today.getDate()+i)>day_count){ // ここに二回分岐してしまう
+                week_day.push(1+hata);
+                flag++;
+                hata++;
+                if(hata>1){
+                    flag--;
+                }
+                localStorage.setItem('flag',flag);
+            }else{
+                week_day.push(today.getDate()+i);
+            }
+        }
+        // ↓月の配列
+        flag = Number(localStorage.getItem('flag'));
+        week_month.push(today.getMonth()+1+flag);
+    }
+    // document.getElementById("out1-2").textContent = "一週間分の作成終了";
+    // ↓作成した献立をセット
+    localStorage.setItem('kondate',JSON.stringify(food_week));
+    localStorage.setItem('week_day',JSON.stringify(week_day));
+    localStorage.setItem('week_month',JSON.stringify(week_month));
+    window.location.reload();
+}
+
+function Open (){
+    // ↓サイトを開いた回数を記録しセット
+    var count = Number(localStorage.getItem('open'));
+    count++;
+    localStorage.setItem('open',count);
+}
+
+// ↓献立を作成する関数
+function start (food_week,incriment,random2){
+    console.log("=============================================");
+    // ↓使う変数の指定
+    var food = [];
+    var count = 0;
+// ===================================================================
+    // ↓食べたいものの指定があった場合の処理
+    if(incriment==7){ // 指定した献立があったら七日目に反映させるためのif文
+        var text = document.getElementById("out1-1").value;
+        var form = document.getElementById("out1-1");
+        if(text!=""){
+            console.log("指定された食べ物："+text);
+            for(var i=0; i<kondate_hairetu.length; i++){
+                for(var j=0; j<kondate_hairetu[i].length; j++){
+                    if(kondate_hairetu[i][j]["name"] == text){
+                        food = kondate_hairetu[i];
+                        console.log(food)
+                        count++;
+                        break;
+                    }
+                }
+                if(count>0){
+                    break;
+                }
+            }
+        }else{
+            console.log("指定された食べ物はありません");
+        }
+        form.value = ""; // フォームを空にする
+    }
+// ===================================================================
+    // ↓ここで好みを反映させることができる、データベースから値を受け取ったらここで反映させる
+    var random3 = Math.floor(Math.random()*DB_Five);
+    if(incriment == random2){
+        for(var i=0; i<kondate_hairetu.length; i++){
+            for(var j=0; j<kondate_hairetu[i].length; j++){
+                if(kondate_hairetu[i][j]["name"] == param[random3]){
+                    food = kondate_hairetu[i];
+                    console.log("random2の値："+random2);
+                    console.log("random3の値："+random3);
+                    console.log("DBから反映させた献立："+JSON.stringify(food));
+                    count++;
+                    break;
+                }
+            }
+        }
+    }
+    console.log("=============================================");
+// ==================================================================
+
+    // ↓完成された献立を代入する処理
+    if(count==0){
+        var random = Math.floor(Math.random()*8);
+        food = kondate_hairetu[random];
+    }
+
+    // 作成した献立の追加
+    food_week.push(food);
+}
+
+// ↓ここからカレンダー作成の関数
+// 前の月表示
+function prev(){
+    var date = localStorage.getItem("Month");
+    console.log("ローカルストレージのdateの値"+date);
+    showDate.setMonth(showDate.getMonth() - 1 + Number(date));
+    month_count = localStorage.getItem('showDate');
+    month_count--;
+    kazu++;
+    localStorage.setItem('showDate',month_count);
+    localStorage.setItem('kazu',kazu);
+    showProcess(showDate);
+    window.location.reload();
+}
+
+// 次の月表示
+function next(){
+    var date = localStorage.getItem("Month");
+    console.log("--------------------------------");
+    console.log("ローカルストレージのdateの値"+date);
+    showDate.setMonth(showDate.getMonth() + 1 + Number(date));
+    console.log("showdateの中："+showDate.getMonth())
+    month_count = localStorage.getItem('showDate');
+    month_count++;
+    console.log("month_countの値："+month_count);
+    kazu++;
+    localStorage.setItem('showDate',month_count);
+    localStorage.setItem('kazu',kazu);
+    showProcess(showDate);
+    console.log("--------------------------------");
+    window.location.reload();
+}
+
+// カレンダー表示
+function showProcess(date){
+    var month_count = Number(localStorage.getItem('showDate'));
+    var kazu = localStorage.getItem('kazu');
+    console.log("--------------------------------");
+    console.log("today.getMonht()の値："+today.getMonth());
+    console.log("Number(month_count)の値："+Number(month_count));
+    console.log("dateの値："+date.getMonth());
+    console.log("month_count："+month_count);
+    if(today.getMonth()==Number(month_count)){
+        console.log("todayとmonth_countが同じ");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('Month',1); // 表示している月をDateにもとずきローカルストレージ
+    }else if(today.getMonth()!=Number(month_count)){
+        Day.setMonth(Day.getMonth() + Number(month_count)-1);
+        console.log("todayとmonth_countが違う");
+        var year = Day.getFullYear();
+        var month = Day.getMonth();
+        // localStorage.setItem('Month',Day.getMonth()); // 表示している月をDateにもとずきローカルストレージ
+        localStorage.setItem('Month',1); // 表示している月をDateにもとずきローカルストレージ
+    }
+    if(kazu>0){
+        console.log("画面表示月を固定で表示");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('kazu',0);
+    }
+    document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
+
+    var calendar = createProcess(year, month);
+    document.querySelector('#calendar').innerHTML = calendar;
+    console.log("--------------------------------");
+}
+
+// カレンダー作成
+function createProcess(year, month) {
+    // 曜日
+    var calendar = "<table><tr class='dayOfWeek'>";
+    for (var i = 0; i < week.length; i++) {
+        calendar += "<th>" + week[i] + "</th>";
+    }
+    calendar += "</tr>";
+
+    var count = 0;
+    var startDayOfWeek = new Date(year, month, 1).getDay();
+    var endDate = new Date(year, month + 1, 0).getDate();
+    var lastMonthEndDate = new Date(year, month, 0).getDate();
+    var row = Math.ceil((startDayOfWeek + endDate) / week.length);
+    var day_count = 0; // 表示月の日付を取得するための変数
+
+    // 1行ずつ設定
+    for (var i = 0; i < row; i++) {
+        calendar += "<tr>";
+        // 1colum単位で設定
+        for (var j = 0; j < week.length; j++) {
+            if (i == 0 && j < startDayOfWeek) {
+                // 1行目で1日まで先月の日付を設定
+                calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
+            } else if (count >= endDate) {
+                // 最終行で最終日以降、翌月の日付を設定
+                count++;
+                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+            } else {
+                // 当月の日付を曜日に照らし合わせて設定
+                count++;
+                if(year == today.getFullYear()
+                    && month == (today.getMonth())
+                    && count == today.getDate()){
+                    calendar += "<td class='today' id='today' onclick=test("+ count +")>" + count + "</td>";
+                    day_count++;
+                } else {
+                    calendar += "<td id = td_"+ count +" onclick=test("+ count +")>" + count + "</td>";
+                    day_count++;
+                }
+            }
+        }
+        calendar += "</tr>";
+    }
+    console.log("表示している月："+(month+1));
+    console.log("表示している日："+day_count);
+    localStorage.setItem('month',(month+1));
+    localStorage.setItem('day_count',day_count);
+    return calendar;
+}
+
+// ↓作成した献立を日にちごとに確認するための関数
+function test (count){
+    // クリックした日付を登録
+    localStorage.setItem('click_day',count);
+    location.href="http://localhost/Menu_creation/php/food.php"
+}
+
+// ↓献立をリセットする関数
+function Rset (){
+    localStorage.setItem('open',0);
+    localStorage.setItem('flag',0);
+    localStorage.removeItem('kondate');
+    localStorage.removeItem('week_day');
+    localStorage.removeItem('week_month');
+    localStorage.removeItem('hoge');
+    window.location.reload();
+}
+
+// ↓ページを再読み込みする関数
+// function Relood (){
+//     window.location.reload();
+// }
+
+const week = ["日", "月", "火", "水", "木", "金", "土"];
+const today = new Date();
+var Day = new Date(today.getFullYear(), today.getMonth(), 1);
+
+// 月末だとずれる可能性があるため、1日固定で取得
+var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
+
+// DBにある評価の値を収納する変数
+var DB_Five = 0;
+
+// 初期表示
+window.onload = function () {
+    for(var i=0; i<Five.length; i++){
+        DB_Five += 1;
+        // console.log("DB_Fiveの値："+DB_Five);
+    }
+    // var hoge = localStorage.getItem('hoge');
+    // hoge++;
+    // if(hoge==1){
+    //     localStorage.setItem('showDate',today.getMonth());
+    // }
+    // localStorage.setItem('hoge',hoge);
+    showProcess(today);
+    var week_day = JSON.parse(localStorage.getItem('week_day'));
+    // ↓ここからバックグランドカラーを付ける処理
+    var month = Number(localStorage.getItem('month'));
+    var week_month = JSON.parse(localStorage.getItem('week_month'));
+    for(var i=0; i<week_day.length; i++){
+        try {
+            if(month == week_month[i]){
+                var td = document.getElementById("td_"+week_day[i]);
+                td.style.backgroundColor = "#FFFF33";
+            }
+        }catch(e){
+            // var td = document.getElementById("today");
+            // td.style.backgroundColor = "#FFFF33";
+        }
+    }
+};
+
+var food_week = [];
+var week_day = [];
+var len = 0;
+var month_count = 0;
+var kazu = 0;
+localStorage.setItem('kazu',kazu);
+
+// 使用ローカルストレージキー
+// Month
+// month
+// open
+// click_day
+// day_count
+// kondate
+// kauz
+// showDate
+// week_day
+// week_month
+// hoge
+
+// ===================================================================
+
+console.log("配列の要素の数："+array.length);
+
+// ===================================================================
+// ↓種類ごとに配列に追加して分け、どれくらいの数があるかを確認するコード
+// var array_syusyoku = [];
+// var array_syusai = [];
+// var array_hukusai = [];
+// var array_sirumono = [];
+// for(var i=0; i<array.length; i++){
+//     if(array[i]["type"]=="syusyoku"){
+//         array_syusyoku.push(array[i]);
+//     }else if(array[i]["type"]=="syusai"){
+//         array_syusai.push(array[i]);
+//     }else if(array[i]["type"]=="hukusai"){
+//         array_hukusai.push(array[i]);
+//     }else if(array[i]["type"]=="sirumono"){
+//         array_sirumono.push(array[i]);
+//     }
+// }
+// // ↓確認用コード
+// console.log("配列array_syusyokuの中身："+array_syusyoku.length);
+// console.log("配列array_syusaiの中身："+array_syusai.length);
+// console.log("配列array_hukusaiの中身："+array_hukusai.length);
+// console.log("配列array_sirumonoの中身："+array_sirumono.length);
+// ===================================================================
+
+
+
+
+
+
+
+
+
+
+
+'use strict';
+
+// ↓献立作成関数
+function Seven (){
+    document.getElementById("out1-1").textContent = "　";
+    var incriment = 0;
+    var day_count = localStorage.getItem('day_count');
+    var hata = 0;
+    var flag = 0;
+    Open();
+    var check = Number(localStorage.getItem('open'));
+    if(check>1){
+        var food_week = JSON.parse(localStorage.getItem('kondate'));
+        var week_day = JSON.parse(localStorage.getItem('week_day'));
+        var week_month = JSON.parse(localStorage.getItem('week_month'));
+    }else{
+        var food_week = [];
+        var week_day = [];
+        var week_month = [];
+    }
+    var random2 = Math.floor(Math.random()*6)+1; // start関数の中で扱う乱数
+    for(var i=0; i<7; i++){
+        incriment++;
+        start(food_week,incriment,random2); // 献立作成の関数を動かす
+        if(check!=1){ // サイトを開いたのが一回目ではないのなら分岐
+            for(var j=0;j<week_day.length; j++){
+                var len = week_day[j];
+            }
+            if((len+1)>day_count){ // このコードは表示している月の日付より上の数字を配列に追加しなくなる
+                week_day.push(1);
+                flag++;
+                localStorage.setItem('flag',flag);
+            }else{
+                week_day.push(len+1);
+            }
+        }else{ // サイトを開いたのが一回目ならこの分岐
+            if((today.getDate()+i)>day_count){ // ここに二回分岐してしまう
+                week_day.push(1+hata);
+                flag++;
+                hata++;
+                if(hata>1){
+                    flag--;
+                }
+                localStorage.setItem('flag',flag);
+            }else{
+                week_day.push(today.getDate()+i);
+            }
+        }
+        // ↓月の配列
+        flag = Number(localStorage.getItem('flag'));
+        week_month.push(today.getMonth()+1+flag);
+    }
+    // document.getElementById("out1-2").textContent = "一週間分の作成終了";
+    // ↓作成した献立をセット
+    localStorage.setItem('kondate',JSON.stringify(food_week));
+    localStorage.setItem('week_day',JSON.stringify(week_day));
+    localStorage.setItem('week_month',JSON.stringify(week_month));
+    window.location.reload();
+}
+
+function Open (){
+    // ↓サイトを開いた回数を記録しセット
+    var count = Number(localStorage.getItem('open'));
+    count++;
+    localStorage.setItem('open',count);
+}
+
+// ↓献立を作成する関数
+function start (food_week,incriment,random2){
+    console.log("=============================================");
+    // ↓使う変数の指定
+    var food = [];
+    var count = 0;
+// ===================================================================
+    // ↓食べたいものの指定があった場合の処理
+    if(incriment==7){ // 指定した献立があったら七日目に反映させるためのif文
+        var text = document.getElementById("out1-1").value;
+        var form = document.getElementById("out1-1");
+        if(text!=""){
+            console.log("指定された食べ物："+text);
+            for(var i=0; i<kondate_hairetu.length; i++){
+                for(var j=0; j<kondate_hairetu[i].length; j++){
+                    if(kondate_hairetu[i][j]["name"] == text){
+                        food = kondate_hairetu[i];
+                        console.log(food)
+                        count++;
+                        break;
+                    }
+                }
+                if(count>0){
+                    break;
+                }
+            }
+        }else{
+            console.log("指定された食べ物はありません");
+        }
+        form.value = ""; // フォームを空にする
+    }
+// ===================================================================
+    // ↓ここで好みを反映させることができる、データベースから値を受け取ったらここで反映させる
+    var random3 = Math.floor(Math.random()*DB_Five);
+    if(incriment == random2){
+        for(var i=0; i<kondate_hairetu.length; i++){
+            for(var j=0; j<kondate_hairetu[i].length; j++){
+                if(kondate_hairetu[i][j]["name"] == param[random3]){
+                    food = kondate_hairetu[i];
+                    console.log("random2の値："+random2);
+                    console.log("random3の値："+random3);
+                    console.log("DBから反映させた献立："+JSON.stringify(food));
+                    count++;
+                    break;
+                }
+            }
+        }
+    }
+    console.log("=============================================");
+// ==================================================================
+
+    // ↓完成された献立を代入する処理
+    if(count==0){
+        var random = Math.floor(Math.random()*8);
+        food = kondate_hairetu[random];
+    }
+
+    // 作成した献立の追加
+    food_week.push(food);
+}
+
+// ↓ここからカレンダー作成の関数
+// 前の月表示
+function prev(){
+    var date = localStorage.getItem("Month");
+    console.log("ローカルストレージのdateの値"+date);
+    showDate.setMonth(showDate.getMonth() - 1 + Number(date));
+    month_count = localStorage.getItem('showDate');
+    month_count--;
+    kazu++;
+    localStorage.setItem('showDate',month_count);
+    localStorage.setItem('kazu',kazu);
+    showProcess(showDate);
+    window.location.reload();
+}
+
+// 次の月表示
+function next(){
+    var date = localStorage.getItem("Month");
+    console.log("--------------------------------");
+    console.log("ローカルストレージのdateの値"+date);
+    showDate.setMonth(showDate.getMonth() + 1 + Number(date));
+    console.log("showdateの値："+showDate);
+    month_count = localStorage.getItem('showDate');
+    month_count++;
+    kazu++;
+    localStorage.setItem('showDate',month_count);
+    localStorage.setItem('kazu',kazu);
+    showProcess(showDate);
+    window.location.reload();
+}
+
+// カレンダー表示
+function showProcess(date) {
+    var month_count = localStorage.getItem('showDate');
+    var kazu = localStorage.getItem('kazu');
+    console.log("--------------------------------");
+    console.log("today.getMonht()の値："+today.getMonth());
+    console.log("Number(month_count)の値："+Number(month_count));
+    console.log("dateの値："+date);
+    if(today.getMonth()==Number(month_count)){
+        console.log("todayとmonth_countが同じ");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('Month',date.getMonth()); // 表示している月をDateにもとずきローカルストレージ
+    }else if(today.getMonth()!=Number(month_count)){
+        Day.setMonth(Day.getMonth() + Number(month_count));
+        console.log("todayとmonth_countが違う");
+        var year = Day.getFullYear();
+        var month = Day.getMonth();
+        localStorage.setItem('Month',Day.getMonth()); // 表示している月をDateにもとずきローカルストレージ
+    }
+    if(kazu>0){
+        console.log("画面表示月を固定で表示");
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        localStorage.setItem('kazu',0);
+    }
+    document.querySelector('#header').innerHTML = year + "年 " + (month + 1) + "月";
+
+    var calendar = createProcess(year, month);
+    document.querySelector('#calendar').innerHTML = calendar;
+}
+
+// カレンダー作成
+function createProcess(year, month) {
+    // 曜日
+    var calendar = "<table><tr class='dayOfWeek'>";
+    for (var i = 0; i < week.length; i++) {
+        calendar += "<th>" + week[i] + "</th>";
+    }
+    calendar += "</tr>";
+
+    var count = 0;
+    var startDayOfWeek = new Date(year, month, 1).getDay();
+    var endDate = new Date(year, month + 1, 0).getDate();
+    var lastMonthEndDate = new Date(year, month, 0).getDate();
+    var row = Math.ceil((startDayOfWeek + endDate) / week.length);
+    var day_count = 0; // 表示月の日付を取得するための変数
+
+    // 1行ずつ設定
+    for (var i = 0; i < row; i++) {
+        calendar += "<tr>";
+        // 1colum単位で設定
+        for (var j = 0; j < week.length; j++) {
+            if (i == 0 && j < startDayOfWeek) {
+                // 1行目で1日まで先月の日付を設定
+                calendar += "<td class='disabled'>" + (lastMonthEndDate - startDayOfWeek + j + 1) + "</td>";
+            } else if (count >= endDate) {
+                // 最終行で最終日以降、翌月の日付を設定
+                count++;
+                calendar += "<td class='disabled'>" + (count - endDate) + "</td>";
+            } else {
+                // 当月の日付を曜日に照らし合わせて設定
+                count++;
+                if(year == today.getFullYear()
+                    && month == (today.getMonth())
+                    && count == today.getDate()){
+                    calendar += "<td class='today' id='today' onclick=test("+ count +")>" + count + "</td>";
+                    day_count++;
+                } else {
+                    calendar += "<td id = td_"+ count +" onclick=test("+ count +")>" + count + "</td>";
+                    day_count++;
+                }
+            }
+        }
+        calendar += "</tr>";
+    }
+    console.log("表示している月："+(month+1));
+    console.log("表示している日："+day_count)
+    localStorage.setItem('month',(month+1));
+    localStorage.setItem('day_count',day_count);
+    return calendar;
+}
+
+// ↓作成した献立を日にちごとに確認するための関数
+function test (count){
+    // クリックした日付を登録
+    localStorage.setItem('click_day',count);
+    location.href="http://localhost/Menu_creation/php/food.php"
+}
+
+// ↓献立をリセットする関数
+function Rset (){
+    localStorage.setItem('open',0);
+    localStorage.setItem('flag',0);
+    localStorage.removeItem('kondate');
+    localStorage.removeItem('week_day');
+    localStorage.removeItem('week_month');
+    window.location.reload();
+}
+
+// ↓ページを再読み込みする関数
+// function Relood (){
+//     window.location.reload();
+// }
+
+const week = ["日", "月", "火", "水", "木", "金", "土"];
+const today = new Date();
+var Day = new Date(today.getFullYear(), today.getMonth(), 1);
+
+// 月末だとずれる可能性があるため、1日固定で取得
+var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
+console.log(showDate)
+
+// DBにある評価の値を収納する変数
+var DB_Five = 0;
+
+// 初期表示
+window.onload = function () {
+    for(var i=0; i<Five.length; i++){
+        DB_Five += 1;
+        // console.log("DB_Fiveの値："+DB_Five);
+    }
+    showProcess(today);
+    var week_day = JSON.parse(localStorage.getItem('week_day'));
+    // ↓ここからバックグランドカラーを付ける処理
+    var month = Number(localStorage.getItem('month'));
+    var week_month = JSON.parse(localStorage.getItem('week_month'));
+    for(var i=0; i<week_day.length; i++){
+        try {
+            if(month == week_month[i]){
+                var td = document.getElementById("td_"+week_day[i]);
+                td.style.backgroundColor = "#FFFF33";
+            }
+        }catch(e){
+            // var td = document.getElementById("today");
+            // td.style.backgroundColor = "#FFFF33";
+        }
+    }
+};
+
+var food_week = [];
+var week_day = [];
+var len = 0;
+var month_count = 0;
+var kazu = 0;
+localStorage.setItem('kazu',kazu);
+
+// 使用ローカルストレージキー
+// Month
+// month
+// open
+// click_day
+// day_count
+// kondate
+// kauz
+// showDate
+// week_day
+// week_month
+
+// ===================================================================
+
+console.log("配列の要素の数："+array.length);
+
+// ===================================================================
+// ↓種類ごとに配列に追加して分け、どれくらいの数があるかを確認するコード
+// var array_syusyoku = [];
+// var array_syusai = [];
+// var array_hukusai = [];
+// var array_sirumono = [];
+// for(var i=0; i<array.length; i++){
+//     if(array[i]["type"]=="syusyoku"){
+//         array_syusyoku.push(array[i]);
+//     }else if(array[i]["type"]=="syusai"){
+//         array_syusai.push(array[i]);
+//     }else if(array[i]["type"]=="hukusai"){
+//         array_hukusai.push(array[i]);
+//     }else if(array[i]["type"]=="sirumono"){
+//         array_sirumono.push(array[i]);
+//     }
+// }
+// // ↓確認用コード
+// console.log("配列array_syusyokuの中身："+array_syusyoku.length);
+// console.log("配列array_syusaiの中身："+array_syusai.length);
+// console.log("配列array_hukusaiの中身："+array_hukusai.length);
+// console.log("配列array_sirumonoの中身："+array_sirumono.length);
+// ===================================================================
+
+
+ if(month == (today.getMonth()+month))
+
+
+           // if(ID[i]<today.getDate()){
+            //     console.log("削除処理開始");
+            //     ID.splice(i,ID.length);
+            //     break;
+            // }
+
+
+
+            if(i==6&&(len+1)==day_count){ // 献立作成時に七日目が月末だった場合に分岐
+                week_day.push(len+1);
+            }else 
+
+
+@charset "utf-8";
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EEFFFF;
+}
+.centre{
+    text-align: center;
+}
+#out1-1{
+    padding: 3px;
+    font-size: 15px;
+    border-color: black;
+    border-radius: 5px;
+}
+/* 献立作成ボタンの装飾 */
+.btn-gradient-3d-simple {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #000;
+    background-image: linear-gradient(#9de3ff 0%, #67ceff 100%);
+    /* border-bottom: solid 3px #5e7fca; */
+}
+
+#title{ /* サイトのタイトル部分 */
+    margin-top: 17px;
+    margin-left: 150px;
+}
+
+/* ↓ここからナビ */
+.site-header{
+    background: #fff;
+    display: flex;
+    padding: 0px 0px;
+    justify-content: space-between;
+    width: 100%;
+}
+.gnav__menu{ /* float leftと同じ役割 */
+    display: flex;
+}
+ul{
+    list-style: none;
+    width: 550px; /* リストの横幅の調整 */
+    margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+}
+li{
+    padding: 10px 20px;
+    float: left;
+    text-align: center;
+    font-size: 95%;
+    width: 120px;
+}
+a{
+    color: rgb(59, 59, 59);
+}
+.black{
+    color: black;
+    text-decoration: none;
+}
+#firstli{
+    border-left: none;
+    border-bottom: 3px solid #92D050;
+}
+li:hover{ /*リストにマウスを乗せたときの処理*/
+    color: #00B0F0;
+    border-bottom: 3px solid #00B0F0;
+}
+
+/*ここから下がハンバーガーメニューのスタイル*/
+.gnavi__sp-style {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+.gnavi__pc-style {
+    display: none;
+}
+.gnavi__sp-style {
+    display: block;
+}
+/*メニューボタン　展開前*/
+.menu-btn {
+    display : block;
+    position: fixed;
+    z-index: 3;
+    right: 30px;
+    top: 20px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    text-align: center;
+}
+.menu-btn span {
+    display : block;
+    position: absolute;
+    width: 30px;
+    height: 2px ;
+    left: 6px;
+    background: #555;
+    transition: 0.3s ease-in-out;
+}
+.menu-btn span:nth-of-type(1) {
+    top: 10px;
+}
+.menu-btn span:nth-of-type(2) {
+    top: 20px;
+}
+.menu-btn span:nth-of-type(3) {
+    top: 30px;
+}
+    
+/*メニューボタン　展開後*/
+.menu-btn.active span:nth-child(1) {
+    top: 16px;
+    left: 6px;
+    background :#fff;
+    transform: rotate(-45deg);
+}
+.menu-btn.active span:nth-child(2),
+.menu-btn.active span:nth-child(3) {
+    top: 16px;
+    background :#fff;
+    transform: rotate(45deg);
+}
+
+/*スマホ用のメニュー*/
+.gnavi__sp-style {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity .6s ease, visibility .6s ease;
+    display: flex;
+    align-items: center;
+}
+.gnavi__sp-style ul {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+.gnavi__sp-style ul li {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    transition: .4s all;
+}
+.gnavi__sp-style ul li:last-of-type {
+    padding-bottom: 0;
+}
+.gnavi__sp-style ul li:hover{
+    background :#ddd;
+}
+.gnavi__sp-style ul li a {
+    display: block;
+    color: #fff;
+    padding: 1em 0;
+    text-decoration :none;
+}
+.gnavi__sp-style.active {
+    opacity: 1;
+}
+}
+
+
+/*↓ここからカレンダー全体*/
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    /* color: rgb(71, 71, 71); */
+    color: rgb(0, 0, 0);
+}
+#header {
+    text-align: center;
+    font-size: 26px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    outline: 2px solid #000; /* カレンダーの外側の線の色 */
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    color: #000;
+}
+th, td {
+    outline: 1px solid rgb(94, 92, 92); /* カレンダーの内側の線の色 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+td:first-child {
+    color: red;
+}
+/*土曜日*/
+td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+    color: rgb(126, 126, 126);
+}
+/*本日*/
+td.today {
+    background-color: #D65E72;
+    color: #fff;
+}
+/*ボタン*/
+#next-prev-button {
+    position: relative;
+}
+#next-prev-button button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: -2.5rem 0 1rem; /* 年と月のh1に重ねる */
+}
+#next-prev-button button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+}
+#prev {
+    float: left;
+}
+#next {
+    float: right;
+}
+
+@media only screen and (max-width:970px){
+    #title{ /* サイトのタイトル部分 */
+        margin-top: 17px;
+        margin-left: 30px;
+    }
+    ul{
+        list-style: none;
+        width: 490px; /* リストの横幅の調整 */
+        margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+    }
+}
+
+
+
+        <!--768px以下で表示-->
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="gnavi__sp-style">
+            <ul>
+            <li><a href="#">メニュー1</a></li>
+            <li><a href="#">メニュー2</a></li>
+            <li><a href="#">メニュー3</a></li>
+            <li><a href="#">メニュー4</a></li>
+            </ul>
+        </nav>
+        <!--/768px以下で表示-->
+
+
+
+
+@charset "utf-8";
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EEFFFF;
+}
+.centre{
+    text-align: center;
+}
+#out1-1{
+    padding: 3px;
+    font-size: 15px;
+    border-color: black;
+    border-radius: 5px;
+}
+/* 献立作成ボタンの装飾 */
+.btn-gradient-3d-simple {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 4px;
+    color: #000;
+    background-image: linear-gradient(#9de3ff 0%, #67ceff 100%);
+    /* border-bottom: solid 3px #5e7fca; */
+}
+
+#title{ /* サイトのタイトル部分 */
+    margin-top: 17px;
+    margin-left: 150px;
+}
+
+/* ↓ここからナビ */
+.site-header{
+    background: #fff;
+    display: flex;
+    padding: 0px 0px;
+    justify-content: space-between;
+    width: 100%;
+}
+.gnav__menu{ /* float leftと同じ役割 */
+    display: flex;
+}
+ul{
+    list-style: none;
+    width: 550px; /* リストの横幅の調整 */
+    margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+}
+li{
+    padding: 10px 20px;
+    float: left;
+    text-align: center;
+    font-size: 95%;
+    width: 120px;
+}
+a{
+    color: rgb(59, 59, 59);
+}
+.black{
+    color: black;
+    text-decoration: none;
+}
+#firstli{
+    border-left: none;
+    border-bottom: 3px solid #92D050;
+}
+li:hover{ /*リストにマウスを乗せたときの処理*/
+    color: #00B0F0;
+    border-bottom: 3px solid #00B0F0;
+}
+
+
+/*↓ここからカレンダー全体*/
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    /* color: rgb(71, 71, 71); */
+    color: rgb(0, 0, 0);
+}
+#header {
+    text-align: center;
+    font-size: 26px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    outline: 2px solid #000; /* カレンダーの外側の線の色 */
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    color: #000;
+}
+th, td {
+    outline: 1px solid rgb(94, 92, 92); /* カレンダーの内側の線の色 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+td:first-child {
+    color: red;
+}
+/*土曜日*/
+td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+    color: rgb(126, 126, 126);
+}
+/*本日*/
+td.today {
+    background-color: #D65E72;
+    color: #fff;
+}
+/*ボタン*/
+#next-prev-button {
+    position: relative;
+}
+#next-prev-button button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: -2.5rem 0 1rem; /* 年と月のh1に重ねる */
+}
+#next-prev-button button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+}
+#prev {
+    float: left;
+}
+#next {
+    float: right;
+}
+
+
+@media only screen and (max-width:970px){
+    #title{ /* サイトのタイトル部分 */
+        margin-top: 17px;
+        margin-left: 30px;
+    }
+    ul{
+        list-style: none;
+        width: 490px; /* リストの横幅の調整 */
+        margin-top: 18px; /* この値は四郡点数法やページの使い方などのナビを上から下に下げる値 */
+    }
+}
+
+
+
+    <header class="site-header">
+        <h1 id="title"><a href="http://localhost/Menu_creation/Central.php" class="black">献立作成サイト</a></h1>
+        <nav>
+            <ul class="gnav__menu">
+                <a href="https://www.asadaame.co.jp/recipeclub/cooking/colmun003.html" target="_blank"><li class="gnav__menu__item" id="firstli">四郡点数法</li></a>
+                <a href="http://localhost/Menu_creation/HTML/food_list.html"><li class="gnav__menu__item">指定できる料理</li></a>
+                <a href="http://localhost/Menu_creation/HTML/Explanation_1.html"><li class="gnav__menu__item" id="lastli">ページの使い方</li></a>
+            </ul>
+        </nav>
+
+                <!--768px以下で表示-->
+                <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="gnavi__sp-style">
+            <ul>
+            <li><a href="#">メニュー1</a></li>
+            <li><a href="#">メニュー2</a></li>
+            <li><a href="#">メニュー3</a></li>
+            <li><a href="#">メニュー4</a></li>
+            </ul>
+        </nav>
+        <!--/768px以下で表示-->
+    </header>

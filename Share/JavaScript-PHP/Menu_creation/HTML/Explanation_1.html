@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/Explanation_1.css">
+</head>
+<body>
+    <!-- ナビのコード -->
+    <header class="site-header">
+        <h1 id="title"><a href="http://localhost/Menu_creation/Central.php" class="black">献立作成サイト</a></h1>
+        <nav>
+            <ul class="gnav__menu">
+                <a href="https://www.asadaame.co.jp/recipeclub/cooking/colmun003.html" target="_blank"><li class="gnav__menu__item" id="firstli">四郡点数法</li></a>
+                <a href="http://localhost/Menu_creation/HTML/food_list.html"><li class="gnav__menu__item">指定できる料理</li></a>
+                <a href="http://localhost/Menu_creation/HTML/Explanation_1.html"><li class="gnav__menu__item" id="lastli">ページの使い方</li></a>
+            </ul>
+        </nav>
+    </header><br>
+
+    <h2 class="center">トップ画面の使い方</h2>
+
+    <div class="center">
+        <img src="../photo/tukaikata/Top_use.JPG" alt="トップページの使い方" width="95%">
+    </div><br>
+
+    <div class="center">
+        <button type="submit" onclick="Return()">献立作成ページに戻る</button>
+    </div><br>
+
+    <script>
+        function Return(){
+            window.location = "http://localhost/Menu_creation/Central.php";
+        }
+    </script>
+</body>
+</html>
