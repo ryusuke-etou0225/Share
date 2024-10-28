@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Restaurant",
-    "\\Restaurant\\Generators"
+    "\\Restaurant\\Generators",
+    "\\Restaurant\\Menus"
   ],
-  "SelectedNode": "\\Restaurant\\Generators\\JsonGenerator.cs",
+  "SelectedNode": "\\Restaurant\\Menus\\Menu.cs",
   "PreviewInSolutionExplorer": false
 }
