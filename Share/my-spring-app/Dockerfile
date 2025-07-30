@@ -1,18 +1,25 @@
-# ベースイメージ
-FROM ubuntu:22.04
+# # ベースイメージ
+# FROM ubuntu:22.04
 
-# 必要なパッケージのインストール
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk nginx curl && \
-    apt-get clean
+# # 必要なパッケージのインストール
+# RUN apt-get update && \
+#     apt-get install -y openjdk-17-jdk nginx curl && \
+#     apt-get clean
 
-# Spring Bootアプリのビルド成果物をコピー
-COPY build/lib/demo-0.0.1-SNAPSHOT.jar /app/demo.jar
+# # Spring Bootアプリのビルド成果物をコピー
+# COPY build/libs/my-spring-app-0.0.1-SNAPSHOT.jar /app/demo.jar
 
-# Nginx設定ファイルをコピー
-COPY nginx/default.conf /etc/nginx/sites-available/default
-# ポート開放
-EXPOSE 80 8080
+# # Nginx設定ファイルをコピー
+# COPY nginx/default.conf /etc/nginx/sites-available/default
+# # ポート開放
+# EXPOSE 80 8080
 
-# 起動スクリプト
-CMD service nginx start && java -jar /app/demo.jar
+# # 起動スクリプト
+# CMD service nginx start && java -jar /app/demo.jar
+
+
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY build/libs/my-spring-app-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
