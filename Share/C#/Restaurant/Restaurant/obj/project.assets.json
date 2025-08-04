@@ -8,19 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ryusu\\.nuget\\packages\\": {}
+    "C:\\Users\\ryusu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ryusu\\source\\repos\\Restaurant\\Restaurant\\Restaurant.csproj",
+      "projectUniqueName": "C:\\Users\\ryusu\\github\\Share\\C#\\Restaurant\\Restaurant\\Restaurant.csproj",
       "projectName": "Restaurant",
-      "projectPath": "C:\\Users\\ryusu\\source\\repos\\Restaurant\\Restaurant\\Restaurant.csproj",
+      "projectPath": "C:\\Users\\ryusu\\github\\Share\\C#\\Restaurant\\Restaurant\\Restaurant.csproj",
       "packagesPath": "C:\\Users\\ryusu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ryusu\\source\\repos\\Restaurant\\Restaurant\\obj\\",
+      "outputPath": "C:\\Users\\ryusu\\github\\Share\\C#\\Restaurant\\Restaurant\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\ryusu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -45,7 +50,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -66,7 +72,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
