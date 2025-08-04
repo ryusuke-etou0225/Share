@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
 public class ErrorTestController {
-
     private static final Logger logger = LoggerFactory.getLogger(ErrorTestController.class);
 
-    @GetMapping("/error-test")
+    @GetMapping("/test/error-test")
     public String errorTest() {
         try {
             // 意図的な例外
